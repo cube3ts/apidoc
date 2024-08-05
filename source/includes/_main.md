@@ -397,7 +397,7 @@ curl -X 'POST' \
 | ✓        | cate2 | 분류2              |
 | ✓        | useYn | 활성화여부(Y or N) |
 
-# 문서
+# 문서(공고,메일,SMS)
 
 ## Get List
 
@@ -417,7 +417,7 @@ curl %MANGE%/api/doc/posting
     {
       "id": 1,
       "name": "2024신입 공채 공고",
-      "title": "찐최종 수정본",
+      "description": "찐최종 수정본",
       "contentEnc": "base64",
       "content": "PCFE...base64...CjwvaHRtbD4=",
       "useYn": "Y",
@@ -457,7 +457,7 @@ curl %MANGE%/api/doc/posting/1
 {
   "id": 1,
   "name": "2024신입 공채 공고",
-  "title": "찐최종 수정본",
+  "description": "찐최종 수정본",
   "contentEnc": "base64",
   "content": "PCFE...base64...CjwvaHRtbD4=",
   "useYn": "Y",
@@ -477,7 +477,7 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "홍보",
-  "title": "공채 채용 알림",
+  "description": "공채 채용 알림",
   "contentEnc": "none",
   "content": "[광고] 2024년도 공개 채용에 응시하세요",
   "useYn": "Y"
@@ -500,13 +500,13 @@ curl -X 'POST' \
 
 ### Json Fields
 
-| Required | Name       | Description                                        |
-| -------- | ---------- | -------------------------------------------------- |
-| ✓        | name       | 명칭                                               |
-| ✓        | title      | 요약 정보                                          |
-| ✓        | contentEnc | content 인코딩(none or base64)                     |
-| ✓        | content    | html, json 등 plain-text가 아닌 경우 base64 인코딩 |
-| ✓        | useYn      | 활성화여부(Y or N)                                 |
+| Required | Name        | Description                                        |
+| -------- | ----------- | -------------------------------------------------- |
+| ✓        | name        | 명칭                                               |
+| ✓        | description | 요약 정보                                          |
+| ✓        | contentEnc  | content 인코딩(none or base64)                     |
+| ✓        | content     | html, json 등 plain-text가 아닌 경우 base64 인코딩 |
+| ✓        | useYn       | 활성화여부(Y or N)                                 |
 
 ## Delete Item
 

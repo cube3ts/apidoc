@@ -150,6 +150,7 @@ curl %MANGE%/api/site
       "corpId": 2,
       "subdomain": "lh-qa",
       "name": "LH품질시험인정센터",
+      "corpName": "한국토지주택공사",
       "createdAt": "2024-07-03T14:52:50.000+00:00",
       "openBegin": "2024-07-03T14:51:53.000+00:00",
       "openEnd": "2025-07-03T14:51:58.000+00:00",
@@ -192,6 +193,7 @@ curl %MANGE%/api/site/2
   "corpId": 2,
   "subdomain": "lh-lab",
   "name": "토지주택연구원",
+  "corpName": "한국토지주택공사",
   "createdAt": "2024-07-03T14:52:52.000+00:00",
   "openBegin": "2024-08-03T14:52:33.000+00:00",
   "openEnd": "2024-10-03T14:52:37.000+00:00",
@@ -218,6 +220,7 @@ curl -X 'POST' \
   -d '{
   "corpId": 2,
   "subdomain": "cafe",
+  "useYn": "Y",
   "name": "사내카페",
   "openBegin": "2024-07-30T00:00",
   "openEnd": "2025-07-30T00:00"
@@ -244,6 +247,7 @@ curl -X 'POST' \
 | -------- | --------- | ------------------------------- |
 | ✓        | corpId    | 기업 객체의 아이디              |
 | ✓        | subdomain | 사이트 도메인의 첫 부분(예 bus) |
+| ✓        | useYn     | 활성화여부(Y or N)              |
 | ✓        | name      | 사이트 이름                     |
 | ✓        | openBegin | 사이트 운용기간 시작 날짜       |
 | ✓        | openEnd   | 사이트 운용기간 종료 날짜       |

@@ -4,6 +4,7 @@ title: Cube API
 code_clipboard: true
 
 includes:
+  - corp_site
   - main
 ---
 

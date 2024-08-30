@@ -81,8 +81,7 @@ curl %MANGE%/api/corp/2
 ## Save Corp
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/corp \
+curl -X 'POST' %MANAGE%/api/corp \
   -H 'Content-Type: application/json' \
   -d '{
   "regNo": "1234567890",
@@ -230,8 +229,7 @@ curl %MANGE%/api/site/2
 ## Save Site
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/site \
+curl -X 'POST' %MANAGE%/api/site \
   -H 'Content-Type: application/json' \
   -d '{
   "corpId": 2,

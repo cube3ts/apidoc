@@ -77,8 +77,7 @@ curl %MANGE%/api/worker/2
 ## Save Item
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/worker \
+curl -X 'POST' %MANAGE%/api/worker \
   -H 'Content-Type: application/json' \
   -d '{
   "type": "staff",

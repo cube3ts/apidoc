@@ -93,8 +93,7 @@ curl %MANGE%/api/addInfo/col
 ## Save Item
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/item \
+curl -X 'POST' %MANAGE%/api/item \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "연금술사",

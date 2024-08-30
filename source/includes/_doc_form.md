@@ -73,8 +73,7 @@ curl %MANGE%/api/doc/posting/1
 ## Save Doc
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/doc/sms \
+curl -X 'POST' %MANAGE%/api/doc/sms \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "홍보",
@@ -235,8 +234,7 @@ curl %MANGE%/api/form/survey/1
 ## Save Form
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/form/survey \
+curl -X 'POST' %MANAGE%/api/form/survey \
   -H 'Content-Type: application/json' \
   -d '{
       "name": "설문1",
@@ -403,8 +401,7 @@ curl %MANGE%/api/formSection/application/2
 ## Save Section
 
 ```shell
-curl -X 'POST' \
-  %MANAGE%/api/formSection/application \
+curl -X 'POST' %MANAGE%/api/formSection/application \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "공통지원서양식1",

@@ -1,6 +1,6 @@
 # 기업
 
-## Get List
+## Get Corp List
 
 ```shell
 curl %MANGE%/api/corp
@@ -40,7 +40,7 @@ curl %MANGE%/api/corp
 | name  | 키워드필터              |
 | regNo | 키워드필터 (사업자번호) |
 
-## Get Item
+## Get Corp
 
 ```shell
 curl %MANGE%/api/corp/2
@@ -78,7 +78,7 @@ curl %MANGE%/api/corp/2
 
 `GET /api/corp/{id}`
 
-## Save Item
+## Save Corp
 
 ```shell
 curl -X 'POST' \
@@ -117,7 +117,7 @@ curl -X 'POST' \
 | ✓        | email     | 법인 대표 이메일                                |
 |          | cbrFileId | 사업자 등록증 파일아이디(최초 등록시 생략 가능) |
 
-## Delete Item
+## Delete Corp
 
 ```shell
 curl -X 'DELETE' %MANAGE%/api/corp/12
@@ -139,7 +139,7 @@ curl -X 'DELETE' %MANAGE%/api/corp/12
 
 # 사이트
 
-## Get List
+## Get Site List
 
 ```shell
 curl %MANGE%/api/site
@@ -195,7 +195,7 @@ curl %MANGE%/api/site
 | subdomain | 키워드필터          |
 | useYn     | 키워드필터 (Y or N) |
 
-## Get Item
+## Get Site
 
 ```shell
 curl %MANGE%/api/site/2
@@ -227,7 +227,7 @@ curl %MANGE%/api/site/2
 | -------- | --------------------------------------------------------- |
 | closedAt | null이 아닌 경우 사이트 종료일을 표시하고 '활성화'로 표시 |
 
-## Save Item
+## Save Site
 
 ```shell
 curl -X 'POST' \
@@ -268,7 +268,7 @@ curl -X 'POST' \
 | ✓        | openBegin | 사이트 운용기간 시작 날짜       |
 | ✓        | openEnd   | 사이트 운용기간 종료 날짜       |
 
-## Delete Item
+## Delete Site
 
 ```shell
 curl -X 'DELETE' %MANAGE%/api/site/6

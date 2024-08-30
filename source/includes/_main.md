@@ -1,3 +1,201 @@
+# 인력
+
+## Get List
+
+```shell
+curl %MANGE%/api/worker
+```
+
+> Response
+
+```json
+{
+  "page": 0,
+  "size": 20,
+  "totalPages": 15,
+  "totalElements": 300,
+  "content": [
+    {
+      "id": 2,
+      "type": "staff",
+      "name": "윤성호",
+      "phone": "01017484139",
+      "region": "울산",
+      "bank": "우리은행",
+      "account": "62785695859896",
+      "accountHolder": "윤성호",
+      "description": "온기",
+      "useYn": "Y",
+      "createdAt": "2024-08-30T00:00:00.000+00:00"
+    },
+    ...
+  ]
+}
+```
+
+### Request
+
+`GET /api/worker`
+
+### Query Parameters (optional)
+
+| Name  | Description         |
+| ----- | ------------------- |
+| type  | staff, proctor      |
+| name  | 키워드필터          |
+| phone | 키워드필터          |
+| useYn | 키워드필터 (Y or N) |
+
+## Get Item
+
+```shell
+curl %MANGE%/api/worker/2
+```
+
+> Response
+
+```json
+{
+  "id": 2,
+  "type": "staff",
+  "name": "윤성호",
+  "phone": "01017484139",
+  "region": "울산",
+  "bank": "우리은행",
+  "account": "62785695859896",
+  "accountHolder": "윤성호",
+  "description": "온기",
+  "useYn": "Y",
+  "createdAt": "2024-08-30T00:00:00.000+00:00"
+}
+```
+
+### Request
+
+`GET /api/worker/{id}`
+
+## Save Item
+
+```shell
+curl -X 'POST' \
+  %MANAGE%/api/worker \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "type": "staff",
+  "name": "홍길동",
+  "phone": "01012341234",
+  "region": "경기",
+  "bank": "하나은행",
+  "account": "2343533",
+  "accountHolder": "홍길동",
+  "description": "테스트",
+  "useYn": "Y"
+}'
+```
+
+> Response
+
+```json
+{
+  "code": 0,
+  "id": 1,
+  "message": ""
+}
+```
+
+### Request
+
+`POST /api/worker`
+
+### Json Fields
+
+| Required | Name          | Description                      |
+| -------- | ------------- | -------------------------------- |
+| ✓        | type          | staff(진행요원), proctor(감독관) |
+| ✓        | name          | 이름                             |
+| ✓        | phone         | 전화번호                         |
+| ✓        | region        | 지역                             |
+| ✓        | bank          | 은행명                           |
+| ✓        | account       | 계좌번호                         |
+| ✓        | accountHolder | 예금주                           |
+| ✓        | description   | 요약정보                         |
+| ✓        | useYn         | 활성화여부(Y or N)               |
+
+## Delete Item
+
+```shell
+curl -X 'DELETE' %MANAGE%/api/worker/1
+```
+
+> Response
+
+```json
+{
+  "code": 0,
+  "id": 1,
+  "message": ""
+}
+```
+
+### Request
+
+`DELETE /api/worker/{id}`
+
+## Check Duplicate
+
+전화번호 중복체크를 합니다.
+
+```shell
+curl %MANGE%2/api/worker/exists/type/staff/phone/01028185038
+```
+
+> Response
+
+```
+true
+```
+
+### Request
+
+### Request
+
+`GET /api/worker/exists/type/{type}/phone/{phone}`
+
+## Upload CSV
+
+```html
+<!DOCTYPE html>
+  <body>
+    <form action="/api/worker/upload/excel" enctype="multipart/form-data" method="POST" >
+      <input name="file" type="file" />
+      <input type="submit" value="UPLOAD" />
+    </form>
+  </body>
+</html>
+```
+
+```
+staff,윤성호,01017484139,울산,우리은행,62785695859896,윤성호,온기,Y
+staff,배도현,01035577118,강원,신한은행,848619602413,배도현,꽃,Y
+proctor,박상현,01085733360,대전,국민은행,36112063293739,박상현,모래,Y
+```
+
+> Response
+
+```json
+{
+  "code": 0,
+  "id": null,
+  "message": ""
+}
+```
+
+### Request
+
+`POST /api/worker/upload/excel`
+
+### Json Fields
+
 # 부가정보
 
 ## Get Spec
@@ -126,476 +324,6 @@ curl -X 'POST' \
 | ✓        | cate1 | 분류1              |
 | ✓        | cate2 | 분류2              |
 | ✓        | useYn | 활성화여부(Y or N) |
-
-# 문서(공고,메일,SMS)
-
-## Get List
-
-```shell
-curl %MANGE%/api/doc/posting
-```
-
-> Response
-
-```json
-{
-  "page": 0,
-  "size": 20,
-  "totalPages": 1,
-  "totalElements": 2,
-  "content": [
-    {
-      "id": 1,
-      "name": "2024신입 공채 공고",
-      "description": "찐최종 수정본",
-      "contentEnc": "base64",
-      "content": "PCFE...base64...CjwvaHRtbD4=",
-      "useYn": "Y",
-      "createdAt": "2024-07-25T08:22:01.820+00:00"
-    },
-    ...
-  ]
-}
-```
-
-### Path Parameters
-
-| Name | Description         |
-| ---- | ------------------- |
-| type | posting, email, sms |
-
-### Query Parameters (optional)
-
-| Name  | Description         |
-| ----- | ------------------- |
-| name  | 키워드필터          |
-| useYn | 키워드필터 (Y or N) |
-
-### Request
-
-`GET /api/doc/{type}`
-
-## Get Item
-
-```shell
-curl %MANGE%/api/doc/posting/1
-```
-
-> Response
-
-```json
-{
-  "id": 1,
-  "name": "2024신입 공채 공고",
-  "description": "찐최종 수정본",
-  "contentEnc": "base64",
-  "content": "PCFE...base64...CjwvaHRtbD4=",
-  "useYn": "Y",
-  "createdAt": "2024-07-25T08:22:01.820+00:00"
-}
-```
-
-### Request
-
-`GET /api/doc/{type}/{id}`
-
-## Save Item
-
-```shell
-curl -X 'POST' \
-  %MANAGE%/api/doc/sms \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "name": "홍보",
-  "description": "공채 채용 알림",
-  "contentEnc": "none",
-  "content": "[광고] 2024년도 공개 채용에 응시하세요",
-  "useYn": "Y"
-}'
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 5,
-  "message": ""
-}
-```
-
-### Request
-
-`POST /api/doc/{type}`
-
-### Json Fields
-
-| Required | Name        | Description                                        |
-| -------- | ----------- | -------------------------------------------------- |
-| ✓        | name        | 명칭                                               |
-| ✓        | description | 요약 정보                                          |
-| ✓        | contentEnc  | content 인코딩(none or base64)                     |
-| ✓        | content     | html, json 등 plain-text가 아닌 경우 base64 인코딩 |
-| ✓        | useYn       | 활성화여부(Y or N)                                 |
-
-## Delete Item
-
-```shell
-curl -X 'DELETE' %MANAGE%/api/doc/sms/5
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 5,
-  "message": ""
-}
-```
-
-### Request
-
-`DELETE /api/doc/{type}/{id}`
-
-# 양식(설문,지원,평가)
-
-## Get List
-
-```shell
-curl %MANGE%/api/form/survey
-```
-
-> Response
-
-```json
-{
-  "page": 0,
-  "size": 20,
-  "totalPages": 1,
-  "totalElements": 2,
-  "content": [
-    {
-      "id": 1,
-      "name": "설문1",
-      "description": "테스트용",
-      "useYn": "Y",
-      "createdAt": "2024-08-11T14:36:30.699+00:00",
-      "content": {
-        ...
-      }
-    },
-    {
-      "id": 2,
-      "name": "회식 설문",
-      "description": "송년회 지사별 의견을 취합하기위함",
-      "useYn": "Y",
-      "createdAt": "2024-08-11T14:37:20.553+00:00",
-      "content": {
-        ...
-      }
-    }
-  ]
-}
-```
-
-### Request
-
-`GET /api/item/form/{type}`
-
-### Path Parameters
-
-| Name | Description                     |
-| ---- | ------------------------------- |
-| type | survey, application, evaluation |
-
-### Query Parameters (optional)
-
-| Name  | Description         |
-| ----- | ------------------- |
-| name  | 키워드필터          |
-| useYn | 키워드필터 (Y or N) |
-
-## Get Item
-
-```shell
-curl %MANGE%/api/form/survey/1
-```
-
-> Response
-
-```json
-{
-  "id": 1,
-  "name": "설문1",
-  "description": "테스트용",
-  "useYn": "Y",
-  "createdAt": "2024-08-11T14:36:30.699+00:00",
-  "content": {
-    "title": "설문조사",
-    "sections": [
-      {
-        "title": "",
-        "itemGroups": [
-          {
-            "itemGroupKey": null,
-            "items": [
-              {
-                "itemKey": null,
-                "itemType": "survey-select",
-                "itemObject": {
-                  ...
-                }
-              }
-            ],
-            "appendable": false
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-### Request
-
-`GET /api/form/{type}/{id}`
-
-## Save Item
-
-```shell
-curl -X 'POST' \
-  %MANAGE%/api/form/survey \
-  -H 'Content-Type: application/json' \
-  -d '{
-      "name": "설문1",
-      "description": "테스트용",
-      "content": {
-        ...
-      },
-      "useYn": "Y"
-  }'
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 1,
-  "message": ""
-}
-```
-
-### Request
-
-`POST /api/form/{type}`
-
-### Json Fields
-
-| Required | Name        | Description        |
-| -------- | ----------- | ------------------ |
-| ✓        | name        | 명칭               |
-| ✓        | description | 요약 정보          |
-| ✓        | content     |                    |
-| ✓        | useYn       | 활성화여부(Y or N) |
-
-## Delete Item
-
-```shell
-curl -X 'DELETE' %MANAGE%/api/form/survey/1
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 1,
-  "message": ""
-}
-```
-
-### Request
-
-`DELETE /api/form/{type}/{id}`
-
-# 양식항목(지원)
-
-## Get List
-
-```shell
-curl %MANGE%/api/formSection/application
-```
-
-> Response
-
-```json
-{
-  "page": 0,
-  "size": 20,
-  "totalPages": 1,
-  "totalElements": 2,
-  "content": [
-    {
-      "id": 1,
-      "name": "기타사항 항목",
-      "description": "지원서항목 테스트",
-      "useYn": "Y",
-      "createdAt": "2024-08-11T14:57:49.528+00:00",
-      "content": {
-        ...
-      }
-    },
-    {
-      "id": 2,
-      "name": "가족사항 항목",
-      "description": "지원서항목 테스트2",
-      "useYn": "Y",
-      "createdAt": "2024-08-11T15:02:57.371+00:00",
-      "content": {
-        ...
-      }
-    }
-  ]
-}
-```
-
-### Request
-
-`GET /api/item/formSection/{type}`
-
-### Path Parameters
-
-| Name | Description |
-| ---- | ----------- |
-| type | application |
-
-### Query Parameters (optional)
-
-| Name  | Description         |
-| ----- | ------------------- |
-| name  | 키워드필터          |
-| useYn | 키워드필터 (Y or N) |
-
-## Get Item
-
-```shell
-curl %MANGE%/api/formSection/application/2
-```
-
-> Response
-
-```json
-{
-  "id": 2,
-  "name": "가족사항 항목",
-  "description": "지원서항목 테스트2",
-  "useYn": "Y",
-  "createdAt": "2024-08-11T15:02:57.371+00:00",
-  "content": {
-    "title": "가족사항",
-    "itemGroups": [
-      {
-        "itemGroupKey": null,
-        "items": [
-          {
-            "itemKey": null,
-            "itemType": "app-select",
-            "itemObject": {
-              "label": "관계",
-              "options": ["엄마", "아빠", "누나"]
-            }
-          },
-          {
-            "itemKey": null,
-            "itemType": "app-text",
-            "itemObject": { "label": "이름" }
-          },
-          {
-            "itemKey": null,
-            "itemType": "app-text",
-            "itemObject": { "label": "나이" }
-          }
-        ],
-        "appendable": true
-      }
-    ]
-  }
-}
-```
-
-### Request
-
-`GET /api/formSection/{type}/{id}`
-
-## Save Item
-
-```shell
-curl -X 'POST' \
-  %MANAGE%/api/formSection/application \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "name": "공통지원서양식1",
-  "description": "양식테스트",
-  "content": {
-    "title": "기타사항",
-    "itemGroups": [
-      {
-        "appendable": false,
-        "items": [
-          ...
-        ]
-      }
-    ]
-  },
-  "useYn": "Y"
-
-  }'
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 1,
-  "message": ""
-}
-```
-
-### Request
-
-`POST /api/formSection/{type}`
-
-### Json Fields
-
-| Required | Name        | Description        |
-| -------- | ----------- | ------------------ |
-| ✓        | name        | 명칭               |
-| ✓        | description | 요약 정보          |
-| ✓        | content     |                    |
-| ✓        | useYn       | 활성화여부(Y or N) |
-
-## Delete Item
-
-```shell
-curl -X 'DELETE' %MANAGE%/api/formSection/application/1
-```
-
-> Response
-
-```json
-{
-  "code": 0,
-  "id": 1,
-  "message": ""
-}
-```
-
-### Request
-
-`DELETE /api/formSection/{type}/{id}`
 
 # 파일
 

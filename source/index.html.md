@@ -15,6 +15,10 @@ includes:
 
 ## Changes
 
+### 2024.8.31
+
+인력(진행인력)API, 계정API가 추가되었습니다.
+
 ### 2024.8.24
 
 사이트 Get List 필터에 corpName(기업명), subdomain 을 추가하였습니다.

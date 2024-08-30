@@ -6,6 +6,8 @@ code_clipboard: true
 includes:
   - corp_site
   - doc_form
+  - worker
+  - user
   - main
 ---
 

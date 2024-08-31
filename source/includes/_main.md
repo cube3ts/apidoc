@@ -167,6 +167,55 @@ curl -X 'POST' %MANAGE%/api/item \
 
 `GET /api/file/{id}`
 
+# 로그
+
+## Get List
+
+```shell
+curl %MANGE%/api/userLog/0
+```
+
+> Response
+
+```json
+{
+  "page": 0,
+  "size": 20,
+  "totalPages": 1,
+  "totalElements": 2,
+  "content": [
+    {
+      "id": 1,
+      "siteId": 0,
+      "userId": "gildong",
+      "userName": "홍길동",
+      "content": "admin 계정 삭제",
+      "createdAt": "2024-08-31T08:39:48.787+00:00"
+    },
+    ...
+  ]
+}
+
+```
+
+### Request
+
+`GET /api/userLog/{siteId}`
+
+### Path Parameters
+
+| Name   | Description   |
+| ------ | ------------- |
+| siteId | 사이트 아이디 |
+
+### Query Parameters (optional)
+
+| Name     | Description |
+| -------- | ----------- |
+| userId   | 키워드필터  |
+| userName | 키워드필터  |
+| content  | 키워드필터  |
+
 # -
 
 ## -

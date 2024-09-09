@@ -1,4 +1,4 @@
-# 문서(공고,메일,SMS)
+# 문서<br>(공고,메일,SMS,서약서)
 
 ## Get Doc List
 
@@ -31,9 +31,9 @@ curl %MANGE%/api/doc/posting
 
 ### Path Parameters
 
-| Name | Description         |
-| ---- | ------------------- |
-| type | posting, email, sms |
+| Name | Description                 |
+| ---- | --------------------------- |
+| type | posting, email, sms, pledge |
 
 ### Query Parameters (optional)
 

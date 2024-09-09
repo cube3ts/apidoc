@@ -6,7 +6,7 @@ code_clipboard: true
 includes:
   - corp_site
   - doc_form
-  - worker
+  - consent_worker
   - user
   - main
 ---
@@ -14,6 +14,12 @@ includes:
 # Read me
 
 ## Changes
+
+### 2024.9.10
+
+문서API의 type에 pledge(서약서)가 추가되었습니다.
+
+동의서API가 추가 되었습니다.
 
 ### 2024.9.5
 
